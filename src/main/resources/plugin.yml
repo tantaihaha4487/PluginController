@@ -1,0 +1,6 @@
+name: Tantaihaha
+version: '${project.version}'
+main: xyz.tantaihaha
+api-version: 1.18
+authors: [ TantaiHaha ]
+description: TantaHah Plugin Controller
