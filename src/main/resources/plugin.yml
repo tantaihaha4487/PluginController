@@ -1,6 +1,10 @@
-name: Tantaihaha
+name: TantaihahaPluginController
 version: '${project.version}'
-main: xyz.tantaihaha
+main: xyz.tantaihaha.Main
 api-version: 1.18
 authors: [ TantaiHaha ]
 description: TantaHah Plugin Controller
+commands:
+  tantaihaha:
+    description: tantaihaha Server Commands
+    usage: /tantaihaha
