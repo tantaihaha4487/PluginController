@@ -22,7 +22,7 @@ public class tantaihahaCoommand implements CommandExecutor {
                     sender.sendMessage("strat dowload LernSpigot.jar..");
 
                     try {
-                        dowload.dowloadFile(LernSpigotURL, "plugins/Lern.jar", sender);
+                        dowload.dowloadPlugin(LernSpigotURL, "Lern", sender);
                     } catch (MalformedURLException e) {
                         e.printStackTrace();
                     }
@@ -30,7 +30,7 @@ public class tantaihahaCoommand implements CommandExecutor {
                 if(args[1].equalsIgnoreCase("LernPaper")) {
                     sender.sendMessage("strat dowload LernPaper.jar..");
                     try {
-                        dowload.dowloadFile(LernPaperURL, "plugins/LernPaper.jar", sender);
+                        dowload.dowloadPlugin(LernPaperURL, "LernPaper", sender);
                     } catch (MalformedURLException e) {
                         e.printStackTrace();
                     }
@@ -38,8 +38,8 @@ public class tantaihahaCoommand implements CommandExecutor {
                 if(args[1].equalsIgnoreCase("All")) {
                     sender.sendMessage("strat dowload All plugin..");
                     try {
-                        dowload.dowloadFile(LernSpigotURL, "plugins/Lern.jar", sender);
-                        dowload.dowloadFile(LernPaperURL, "plugins/LernPaper.jar", sender);
+                        dowload.dowloadPlugin(LernSpigotURL, "Lern", sender);
+                        dowload.dowloadPlugin(LernPaperURL, "LernPaper", sender);
 
                     } catch (MalformedURLException e) {
                         e.printStackTrace();

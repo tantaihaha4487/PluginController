@@ -3,6 +3,7 @@ package xyz.tantaihaha.engine;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -13,8 +14,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class dowload {
-    public static void dowloadFile(String web, String path, CommandSender sender) throws MalformedURLException {
+    public static void dowloadPlugin(@NotNull String web, @NotNull String FileName, @NotNull CommandSender sender) throws MalformedURLException {
         URL url = new URL(web);
+        String path = "plugins/" + FileName + ".jar";
         try{
             HttpURLConnection con = (HttpURLConnection) (url.openConnection());
             FileOutputStream stream = new FileOutputStream(path);
@@ -23,19 +25,29 @@ public class dowload {
 
         }
         try {
+            sender.sendMessage(ChatColor.AQUA + "Dowload " + FileName + "..");
             BufferedInputStream bufferedInputStream = new  BufferedInputStream(url.openStream());
             FileOutputStream stream = new FileOutputStream(path);
+            HttpURLConnection con = (HttpURLConnection) (url.openConnection());
+            double size = (double) con.getContentLengthLong();
 
-            int count = 0;
+            double download1 = 0.0D;
+            int read = 0;
             byte[] bytes = new byte[1024];
+            int save = 0;
 
-            while((count = bufferedInputStream.read(bytes)) != -1) {
-                sender.sendMessage(ChatColor.AQUA.toString() + count + ">> KB downloaded:" + new File(path).length()/1024);
-                stream.write(bytes, 0, count);
+            while((read = bufferedInputStream.read(bytes)) != -1) {
+                download1 += (double)read;
+                int percent = (int)(download1 * 100.0D / size);
+                if (percent - save == 5) {
+                    sender.sendMessage(ChatColor.GOLD + "Download: " + FileName + " " + ChatColor.GREEN + percent + "%");
+                    save = percent;
+                }
+                stream.write(bytes, 0, read);
             }
-            sender.sendMessage(ChatColor.GREEN + "Download Done!");
+            sender.sendMessage(ChatColor.GREEN + "Download " + FileName + " Done!");
         } catch (Exception exception) {
-            sender.sendMessage(ChatColor.RED + "Error to Download File!");
+            sender.sendMessage(ChatColor.RED + "Error to " + FileName + " Download File!");
             return;
         }
     }
