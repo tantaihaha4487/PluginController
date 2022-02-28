@@ -23,6 +23,7 @@ public class tantaihahaTabComplete implements TabCompleter {
                     List<String> Argument2 = new ArrayList<>();
                     Argument2.add("LernSpigot");
                     Argument2.add("LernPaper");
+                    Argument2.add("All");
                     return Argument2;
                 }
             }

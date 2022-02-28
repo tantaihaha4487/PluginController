@@ -8,6 +8,10 @@ import xyz.tantaihaha.engine.dowload;
 import java.net.MalformedURLException;
 
 public class tantaihahaCoommand implements CommandExecutor {
+    private String LernSpigotURL = "https://github.com/tantaihaha4487/ReleaseFile/raw/main/Lern.jar";
+    private String LernPaperURL = "https://github.com/tantaihaha4487/ReleaseFile/raw/main/Lern-2.jar";
+    private String PluginControllerURL = "https://github.com/tantaihaha4487/ReleaseFile/raw/main/PluginController.jar";
+
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
@@ -16,21 +20,31 @@ public class tantaihahaCoommand implements CommandExecutor {
 
                 if(args[1].equalsIgnoreCase("LernSpigot")) {
                     sender.sendMessage("strat dowload LernSpigot.jar..");
-                    String LerbSoigotURL = "https://github.com/tantaihaha4487/ReleaseFile/raw/main/Lern.jar";
+
                     try {
-                        dowload.dowloadFile(LerbSoigotURL, "plugins/Lern.jar", sender);
+                        dowload.dowloadFile(LernSpigotURL, "plugins/Lern.jar", sender);
                     } catch (MalformedURLException e) {
                         e.printStackTrace();
                     }
                 }
                 if(args[1].equalsIgnoreCase("LernPaper")) {
                     sender.sendMessage("strat dowload LernPaper.jar..");
-                    String LerbSoigotURL = "https://github.com/tantaihaha4487/ReleaseFile/raw/main/Lern-2.jar";
                     try {
-                        dowload.dowloadFile(LerbSoigotURL, "plugins/LernPaper.jar", sender);
+                        dowload.dowloadFile(LernPaperURL, "plugins/LernPaper.jar", sender);
                     } catch (MalformedURLException e) {
                         e.printStackTrace();
                     }
+                }
+                if(args[1].equalsIgnoreCase("All")) {
+                    sender.sendMessage("strat dowload All plugin..");
+                    try {
+                        dowload.dowloadFile(LernSpigotURL, "plugins/Lern.jar", sender);
+                        dowload.dowloadFile(LernPaperURL, "plugins/LernPaper.jar", sender);
+
+                    } catch (MalformedURLException e) {
+                        e.printStackTrace();
+                    }
+
                 }
 
             }
