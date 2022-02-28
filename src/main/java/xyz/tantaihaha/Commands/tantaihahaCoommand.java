@@ -37,13 +37,7 @@ public class tantaihahaCoommand implements CommandExecutor {
                 }
                 if(args[1].equalsIgnoreCase("All")) {
                     sender.sendMessage("strat dowload All plugin..");
-                    try {
-                        dowload.dowloadPlugin(LernSpigotURL, "Lern", sender);
-                        dowload.dowloadPlugin(LernPaperURL, "LernPaper", sender);
-
-                    } catch (MalformedURLException e) {
-                        e.printStackTrace();
-                    }
+                    dowload.updateAll(sender);
 
                 }
 

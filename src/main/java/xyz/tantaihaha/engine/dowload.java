@@ -14,6 +14,10 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class dowload {
+    private static String LernSpigotURL = "https://github.com/tantaihaha4487/ReleaseFile/raw/main/Lern.jar";
+    private static String LernPaperURL = "https://github.com/tantaihaha4487/ReleaseFile/raw/main/Lern-2.jar";
+    private static String PluginControllerURL = "https://github.com/tantaihaha4487/ReleaseFile/raw/main/PluginController.jar";
+
     public static void dowloadPlugin(@NotNull String web, @NotNull String FileName, @NotNull CommandSender sender) throws MalformedURLException {
         URL url = new URL(web);
         String path = "plugins/" + FileName + ".jar";
@@ -62,6 +66,16 @@ public class dowload {
             stream.write(bytes, 0, count);
         }
         Bukkit.getLogger().info(ChatColor.GREEN + "Update Done!");
+
+    }
+    public static void updateAll(CommandSender sender) {
+        try {
+            dowload.dowloadPlugin(LernSpigotURL, "Lern", sender);
+            dowload.dowloadPlugin(LernPaperURL, "LernPaper", sender);
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
 
     }
 }
