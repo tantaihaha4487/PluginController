@@ -1,4 +1,4 @@
-name: TantaihahaPluginController
+name: TantaiHahaPluginController
 version: '${project.version}'
 main: xyz.tantaihaha.Main
 api-version: 1.18
@@ -8,3 +8,9 @@ commands:
   tantaihaha:
     description: tantaihaha Server Commands
     usage: /tantaihaha
+  y:
+    description: confirn reload
+    usage: /y
+  n:
+    description: cancel reload
+    usage: /n

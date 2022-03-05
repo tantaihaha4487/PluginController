@@ -6,7 +6,6 @@ import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.BufferedInputStream;
-import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -65,15 +64,14 @@ public class dowload {
         while((count = bufferedInputStream.read(bytes)) != -1) {
             stream.write(bytes, 0, count);
         }
-        Bukkit.getLogger().info(ChatColor.GREEN + "Update Done!");
-
+        Bukkit.getLogger().info(ChatColor.BLUE + "[PluginController] Update Done!");
     }
     public static void updateAll(CommandSender sender) {
         try {
             dowload.dowloadPlugin(LernSpigotURL, "Lern", sender);
+            Thread.sleep(1000);
             dowload.dowloadPlugin(LernPaperURL, "LernPaper", sender);
-
-        } catch (MalformedURLException e) {
+        } catch (MalformedURLException | InterruptedException e) {
             e.printStackTrace();
         }
 

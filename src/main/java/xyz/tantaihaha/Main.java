@@ -2,18 +2,19 @@ package xyz.tantaihaha;
 
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
-import xyz.tantaihaha.Commands.tantaihahaCoommand;
+import xyz.tantaihaha.Commands.tantaihahaCommand;
 import xyz.tantaihaha.TabComplete.tantaihahaTabComplete;
 import xyz.tantaihaha.engine.dowload;
+import xyz.tantaihaha.task.ConfirmCommnadTask;
 
 import java.io.IOException;
 
 public class Main extends JavaPlugin {
     @Override
     public void onEnable() {
-        getCommand("tantaihaha").setExecutor(new tantaihahaCoommand());
+        getCommand("tantaihaha").setExecutor(new tantaihahaCommand());
         getCommand("tantaihaha").setTabCompleter(new tantaihahaTabComplete());
-        ///UpdateLogic
+        new ConfirmCommnadTask(this);
         try {
             dowload.autoUpdateSelf();
         } catch (IOException e) {
