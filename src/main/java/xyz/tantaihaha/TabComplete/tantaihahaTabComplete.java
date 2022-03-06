@@ -15,10 +15,10 @@ public class tantaihahaTabComplete implements TabCompleter {
         if (cmd.getName().equalsIgnoreCase("tantaihaha")) {
             if (args.length == 1) {
                 List<String> Argument1 = new ArrayList<>();
-                Argument1.add("dowload");
+                Argument1.add("download");
                 return Argument1;
             }
-            if(args[0].equalsIgnoreCase("dowload")) {
+            if(args[0].equalsIgnoreCase("download")) {
                 if (args[1].length() == 0) {
                     List<String> Argument2 = new ArrayList<>();
                     Argument2.add("LernSpigot");

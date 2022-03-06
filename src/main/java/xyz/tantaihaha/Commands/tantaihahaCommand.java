@@ -12,24 +12,20 @@ import xyz.tantaihaha.engine.dowload;
 import xyz.tantaihaha.task.ConfirmCommnadTask;
 
 import java.net.MalformedURLException;
-import java.util.HashMap;
 
 public class tantaihahaCommand implements CommandExecutor {
-    private String LernSpigotURL = "https://github.com/tantaihaha4487/ReleaseFile/raw/main/Lern.jar";
-    private String LernPaperURL = "https://github.com/tantaihaha4487/ReleaseFile/raw/main/Lern-2.jar";
-    private String PluginControllerURL = "https://github.com/tantaihaha4487/ReleaseFile/raw/main/PluginController.jar";
+    private final String LernSpigotURL = "https://github.com/tantaihaha4487/ReleaseFile/raw/main/Lern.jar";
+    private final String LernPaperURL = "https://github.com/tantaihaha4487/ReleaseFile/raw/main/Lern-2.jar";
+    private final String PluginControllerURL = "https://github.com/tantaihaha4487/ReleaseFile/raw/main/PluginController.jar";
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
         if (cmd.getName().equalsIgnoreCase("tantaihaha")) {
-            if(sender instanceof Player) {
-               sender.sendMessage("Who r u");
-            }
-            if(args[0].equalsIgnoreCase("dowload")) {
+            if(args[0].equalsIgnoreCase("download")) {
 
                 if(args[1].equalsIgnoreCase("LernSpigot")) {
-                    sender.sendMessage("strat dowload LernSpigot.jar..");
+                    sender.sendMessage("start download LernSpigot.jar..");
 
                     try {
                         dowload.dowloadPlugin(LernSpigotURL, "Lern", sender);
@@ -40,7 +36,7 @@ public class tantaihahaCommand implements CommandExecutor {
                     }
                 }
                 if(args[1].equalsIgnoreCase("LernPaper")) {
-                    sender.sendMessage("strat dowload LernPaper.jar..");
+                    sender.sendMessage("start download LernPaper.jar..");
                     try {
                         dowload.dowloadPlugin(LernPaperURL, "LernPaper", sender);
                         confirmReloadButton(sender);
@@ -50,7 +46,7 @@ public class tantaihahaCommand implements CommandExecutor {
                     }
                 }
                 if(args[1].equalsIgnoreCase("All")) {
-                    sender.sendMessage("strat dowload All plugin..");
+                    sender.sendMessage("start download All plugin..");
                     try {
                         dowload.updateAll(sender);
                         confirmReloadButton(sender);
@@ -63,7 +59,7 @@ public class tantaihahaCommand implements CommandExecutor {
             }
             if(args[0].equalsIgnoreCase("reload")) {
                 Player p = (Player) sender;
-                if(p.isOp() == false) {p.sendMessage(ChatColor.RED + "You aren't admin!");
+                if(!p.isOp()) {p.sendMessage(ChatColor.RED + "You aren't admin!");
                 return true;
                 }
                 else {
@@ -72,7 +68,7 @@ public class tantaihahaCommand implements CommandExecutor {
             }
             if(args[0].equalsIgnoreCase("noreload")) {
                 Player p = (Player) sender;
-                if(p.isOp() == false) {p.sendMessage(ChatColor.RED + "You aren't admin!");
+                if(!p.isOp()) {p.sendMessage(ChatColor.RED + "You aren't admin!");
                     return true;
                 }
 
@@ -92,7 +88,7 @@ public class tantaihahaCommand implements CommandExecutor {
                 break;
             case 1:
                 Player p = (Player) sender;
-                if(p.isOp() == false) {p.sendMessage(ChatColor.RED + "You aren't admin!");
+                if(!p.isOp()) {p.sendMessage(ChatColor.RED + "You aren't admin!");
                     return;
                 }
                 p.sendMessage(ChatColor.AQUA + "Do you want to reload?");

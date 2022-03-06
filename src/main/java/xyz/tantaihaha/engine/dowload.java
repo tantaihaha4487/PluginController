@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;
+import xyz.tantaihaha.Main;
 
 import java.io.BufferedInputStream;
 import java.io.FileOutputStream;
@@ -13,9 +14,11 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class dowload {
+    private static Main plugin;
     private static String LernSpigotURL = "https://github.com/tantaihaha4487/ReleaseFile/raw/main/Lern.jar";
     private static String LernPaperURL = "https://github.com/tantaihaha4487/ReleaseFile/raw/main/Lern-2.jar";
     private static String PluginControllerURL = "https://github.com/tantaihaha4487/ReleaseFile/raw/main/PluginController.jar";
+    public dowload(Main plugin) {this.plugin = plugin;}
 
     public static void dowloadPlugin(@NotNull String web, @NotNull String FileName, @NotNull CommandSender sender) throws MalformedURLException {
         URL url = new URL(web);
@@ -55,16 +58,21 @@ public class dowload {
         }
     }
     public static void autoUpdateSelf() throws IOException {
-        BufferedInputStream bufferedInputStream = new  BufferedInputStream(new URL("https://github.com/tantaihaha4487/ReleaseFile/raw/main/PluginController.jar").openStream());
-        FileOutputStream stream = new FileOutputStream("plugins/PluginController.jar");
+        if(plugin.getConfig().getBoolean("autoupdatecontroller")) {
+            BufferedInputStream bufferedInputStream = new BufferedInputStream(new URL("https://github.com/tantaihaha4487/ReleaseFile/raw/main/PluginController.jar").openStream());
+            FileOutputStream stream = new FileOutputStream("plugins/PluginController.jar");
 
-        int count = 0;
-        byte[] bytes = new byte[1024];
+            int count = 0;
+            byte[] bytes = new byte[1024];
 
-        while((count = bufferedInputStream.read(bytes)) != -1) {
-            stream.write(bytes, 0, count);
+            while ((count = bufferedInputStream.read(bytes)) != -1) {
+                stream.write(bytes, 0, count);
+            }
+            Bukkit.getLogger().info(ChatColor.BLUE + "[PluginController] Update Done!");
         }
-        Bukkit.getLogger().info(ChatColor.BLUE + "[PluginController] Update Done!");
+        else {
+            Bukkit.getLogger().info(ChatColor.AQUA + "[PluginController] Auto Update" + ChatColor.BOLD +" is Disable");
+        }
     }
     public static void updateAll(CommandSender sender) {
         try {
@@ -74,6 +82,5 @@ public class dowload {
         } catch (MalformedURLException | InterruptedException e) {
             e.printStackTrace();
         }
-
     }
 }

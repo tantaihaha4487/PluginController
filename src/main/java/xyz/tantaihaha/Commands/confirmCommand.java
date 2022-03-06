@@ -1,5 +1,6 @@
 package xyz.tantaihaha.Commands;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -21,16 +22,18 @@ public class confirmCommand implements CommandExecutor{
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if(cmd.getName().equalsIgnoreCase("y")) {
             if(ConfirmCommnadTask.taskManager.get("Run").equals(1)) {
-                plugin.getServer().reload();
+                Bukkit.getServer().reload();
                 sender.sendMessage(ChatColor.GREEN.toString() + ChatColor.BOLD + "Reload Complete!");
                 ConfirmCommnadTask.taskManager.replace("Run", 0);
             }
+            else {sender.sendMessage(ChatColor.RED + "Use after Download only!");}
         }
         if(cmd.getName().equalsIgnoreCase("n")) {
             if(ConfirmCommnadTask.taskManager.get("Run").equals(1)) {
                 sender.sendMessage(ChatColor.GREEN.toString() + ChatColor.BOLD + "Reload Complete!");
                 ConfirmCommnadTask.taskManager.replace("Run", 0);
             }
+            else {sender.sendMessage(ChatColor.RED + "Use after Download only!");}
         }
         return true;
     }
