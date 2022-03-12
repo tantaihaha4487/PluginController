@@ -71,7 +71,7 @@ public class dowload {
             Bukkit.getLogger().info(ChatColor.AQUA + "[PluginController] " + ChatColor.GREEN +"Update Done!");
         }
         else {
-            Bukkit.getLogger().info(ChatColor.AQUA + "[PluginController] Auto Update" + ChatColor.BOLD +" is " + ChatColor.RED +"Disable");
+            Bukkit.getLogger().info(ChatColor.AQUA + "[PluginController] Auto Update is " + ChatColor.RED +"Disable");
         }
     }
     public static void updateAll(CommandSender sender) {
