@@ -68,10 +68,10 @@ public class dowload {
             while ((count = bufferedInputStream.read(bytes)) != -1) {
                 stream.write(bytes, 0, count);
             }
-            Bukkit.getLogger().info(ChatColor.BLUE + "[PluginController] Update Done!");
+            Bukkit.getLogger().info(ChatColor.AQUA + "[PluginController] " + ChatColor.GREEN +"Update Done!");
         }
         else {
-            Bukkit.getLogger().info(ChatColor.AQUA + "[PluginController] Auto Update" + ChatColor.BOLD +" is Disable");
+            Bukkit.getLogger().info(ChatColor.AQUA + "[PluginController] Auto Update" + ChatColor.BOLD +" is " + ChatColor.RED +"Disable");
         }
     }
     public static void updateAll(CommandSender sender) {
