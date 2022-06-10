@@ -11,7 +11,7 @@
 
     <name>Tantaihaha</name>
 
-    <description>TantaHaha Plugin Controller</description>
+    <description>TantaiHaha Plugin Controller</description>
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
