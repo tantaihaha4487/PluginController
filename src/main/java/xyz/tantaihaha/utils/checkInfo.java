@@ -140,7 +140,6 @@ public class checkInfo {
             JsonObject urlJsonObj = (JsonObject) urlObj;
             String urlStr = urlJsonObj.get("url").getAsString();
 
-
             return new URL(urlStr);
         }
     }

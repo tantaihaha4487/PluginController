@@ -8,7 +8,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import xyz.tantaihaha.engine.dowload;
+import xyz.tantaihaha.engine.download;
 import xyz.tantaihaha.task.ConfirmCommnadTask;
 
 import java.net.MalformedURLException;
@@ -28,7 +28,7 @@ public class tantaihahaCommand implements CommandExecutor {
                     sender.sendMessage("start download LernSpigot.jar..");
 
                     try {
-                        dowload.dowloadPlugin(LernSpigotURL, "Lern", sender);
+                        download.downloadPlugin(LernSpigotURL, "Lern", sender);
                         confirmReloadButton(sender);
                         ConfirmCommnadTask.removeTask(sender);
                     } catch (MalformedURLException e) {
@@ -38,7 +38,7 @@ public class tantaihahaCommand implements CommandExecutor {
                 if(args[1].equalsIgnoreCase("LernPaper")) {
                     sender.sendMessage("start download LernPaper.jar..");
                     try {
-                        dowload.dowloadPlugin(LernPaperURL, "LernPaper", sender);
+                        download.downloadPlugin(LernPaperURL, "LernPaper", sender);
                         confirmReloadButton(sender);
                         ConfirmCommnadTask.removeTask(sender);
                     } catch (MalformedURLException e) {
@@ -48,7 +48,7 @@ public class tantaihahaCommand implements CommandExecutor {
                 if(args[1].equalsIgnoreCase("All")) {
                     sender.sendMessage("start download All plugin..");
                     try {
-                        dowload.updateAll(sender);
+                        download.updateAll(sender);
                         confirmReloadButton(sender);
                         ConfirmCommnadTask.removeTask(sender);
                     } catch (Exception exception2) {
